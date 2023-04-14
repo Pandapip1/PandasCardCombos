@@ -1,0 +1,134 @@
+# Automatically generates an artifact, which is a zip file containing the icon.png, the manifest.json, the LICENSE.md, and the README.md files. The artifact is uploaded to the GitHub Actions artifacts page.
+name: Continuous Integration
+on:
+    push:
+        branches:
+          - main
+    pull_request:
+        branches:
+          - main
+
+permissions: write-all
+
+jobs:
+    checkversionmismatch:
+        runs-on: ubuntu-latest
+        name: Ensure Version Parameters Match
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Read manifest.json
+            id: manifest
+            uses: ActionsTools/read-json-action@v1.0.5
+            with:
+                file_path: manifest.json
+                prop_path: version_number
+          - name: Read PandasCardCombos.csproj Version
+            id: csproj
+            uses: mavrosxristoforos/get-xml-info@1.1.1
+            with:
+                xml-file: PandasCardCombos.csproj
+                xpath: /Project/PropertyGroup/Version
+          - name: Validate version
+            if: steps.manifest.outputs.value != steps.csproj.outputs.info
+            run: |
+                echo "Version mismatch between manifest.json and PandasCardCombos.csproj"
+                echo "manifest.json: ${MANIFEST_VERSION}"
+                echo "PandasCardCombos.csproj: ${CSPROJ_VERSION}"
+                exit 1
+            env:
+                MANIFEST_VERSION: ${{ steps.manifest.outputs.value }}
+                CSPROJ_VERSION: ${{ steps.csproj.outputs.info }}
+    build:
+        name: Build and Package
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Setup .NET Core SDK
+            uses: actions/setup-dotnet@v3
+            with:
+                dotnet-version: 7.0.104
+          - name: Build Dotnet
+            run: dotnet build --configuration Release
+          - name: Copy File to Mod Folder
+            run: |
+                mkdir -p PandasCardCombos/BepInEx/plugins
+                cp -r bin/Release/netstandard2.1/PandasCardCombos.dll PandasCardCombos/BepInEx/plugins
+          - name: Upload Artifact
+            uses: actions/upload-artifact@v3
+            with:
+                name: package
+                path: |
+                    icon.png
+                    manifest.json
+                    LICENSE.md
+                    README.md
+                    PandasCardCombos
+    checkrelease:
+        name: Determine if Release is Needed
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        outputs:
+            release_needed: ${{ steps.check.outputs.release }}
+            version: ${{ steps.check.outputs.version }}
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Read manifest.json
+            id: manifest
+            uses: ActionsTools/read-json-action@v1.0.5
+            with:
+                file_path: manifest.json
+                prop_path: version_number
+          - name: Get Latest Tag
+            id: latest_tag
+            uses: actions-ecosystem/action-get-latest-tag@v1
+            with:
+                semver_only: true
+                initial_version: 1.0.0
+                with_initial_version: true
+          - name: Output Whether a Release is Needed
+            id: check
+            run: |
+                echo "Latest Tag: ${{ steps.latest_tag.outputs.tag }}"
+                echo "Manifest Version: ${{ steps.manifest.outputs.value }}"
+                if [ "${{ steps.latest_tag.outputs.tag }}" == "${{ steps.manifest.outputs.value }}" ]; then
+                    echo "Release not needed"
+                    echo "release=false" >> $GITHUB_OUTPUT
+                    echo "version=${{ steps.latest_tag.outputs.tag }}" >> $GITHUB_OUTPUT
+                else
+                    echo "Release needed"
+                    echo "release=true" >> $GITHUB_OUTPUT
+                    echo "version=${{ steps.manifest.outputs.value }}" >> $GITHUB_OUTPUT
+                fi
+    publish:
+        name: Publish and Release
+        runs-on: ubuntu-latest
+        needs: [checkversionmismatch, build, checkrelease]
+        if: needs.checkrelease.outputs.release_needed == 'true'
+        steps:
+          - name: Download Artifact
+            uses: actions/download-artifact@v3
+            with:
+                name: package
+          - name: Publish to Thunderstore
+            uses: GreenTF/upload-thunderstore-package@v3.1
+            with:
+                token: ${{ secrets.THUNDERSTORE_TOKEN }}
+                community: rounds
+                namespace: Pandapip1
+                name: PandasCardCombos
+                version: ${{ needs.checkrelease.outputs.version }}
+                path: .
+          - name: Create Release
+            uses: actions/create-release@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+                tag_name: ${{ needs.checkrelease.outputs.version }}
+                release_name: Release ${{ needs.checkrelease.outputs.version }}
+                body: |
+                    Release ${{ needs.checkrelease.outputs.version }}
+                draft: false
+                prerelease: false

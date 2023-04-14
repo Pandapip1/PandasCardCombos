@@ -1,0 +1,13 @@
+{
+    "name": "PandasCardCombos",
+    "version_number": "1.0.0",
+    "website_url": "https://pandapip1.com/",
+    "description": "A ROUNDS mod that has cards that give you more cards.",
+    "dependencies": [
+        "BepInEx-BepInExPack_ROUNDS-5.4.1900",
+        "willis81808-UnboundLib-3.2.10",
+        "Pykess-ModdingUtils-0.4.6",
+        "CrazyCoders-RarityBundle-0.0.0",
+        "Root-RarityLib-1.2.3"
+    ]
+}

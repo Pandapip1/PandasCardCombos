@@ -43,7 +43,7 @@ namespace PandasCardCombos.Cards
             return new Dictionary<CardInfo, int>()
             {
                 {
-                    GetCardInfoByName("Sneaky"),
+                    GetCardInfoByName("Sneaky bullets"),
                     5
                 },
                 {

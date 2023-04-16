@@ -84,6 +84,18 @@ namespace PandasCardCombos
                 // Save the CardInfo instance for later use
                 Cards.SilentButDeadly.cardInfoInstance = card;
             });
+            CustomCard.BuildCard<Cards.InstaReload>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.InstaReload.cardInfoInstance = card;
+            });
+            CustomCard.BuildCard<Cards.OhDeer>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.OhDeer.cardInfoInstance = card;
+            });
+            CustomCard.BuildCard<Cards.PhunixSandwich>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.PhunixSandwich.cardInfoInstance = card;
+            });
 
             // Harmony patching: all patches in the same assembly as this class will be applied
             Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);

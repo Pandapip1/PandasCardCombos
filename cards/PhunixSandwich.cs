@@ -6,21 +6,21 @@ using UnboundLib;
 
 namespace PandasCardCombos.Cards
 {
-    public class PhunixsInbox : BaseCombo
+    public class PhunixSandwich : BaseCombo
     {
         protected override string GetTitle()
         {
-            return "Phunix's Business Email";
+            return "Phunix Sandwich";
         }
 
         protected override string GetDescription()
         {
-            return "Hi Phunix, I made a mod that allows you...";
+            return "Nom nom tasty bird";
         }
 
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityLib.Utils.RarityUtils.GetRarity("Trinket");
+            return RarityLib.Utils.RarityUtils.GetRarity("Legendary");
         }
 
         protected override CardThemeColor.CardThemeColorType GetTheme()
@@ -43,11 +43,19 @@ namespace PandasCardCombos.Cards
             return new Dictionary<CardInfo, int>()
             {
                 {
-                    GetCardInfoByName("Careful planning"),
-                    2
+                    GetCardInfoByName("Phoenix"),
+                    1
                 },
                 {
-                    GetCardInfoByName("Silence"),
+                    GetCardInfoByName("__PCC__Oh Deer!"),
+                    1
+                },
+                {
+                    GetCardInfoByName("__PCC__Insta Reload"),
+                    1
+                },
+                {
+                    GetCardInfoByName("__PCC_Phunix's Business Email"),
                     1
                 }
             };

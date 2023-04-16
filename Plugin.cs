@@ -35,82 +35,82 @@ namespace PandasCardCombos
             CustomCard.BuildCard<Cards.AirTrafficController>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.AirTrafficController.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.Karen>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.Karen.cardInfoInstance = card;
-            }); 
             CustomCard.BuildCard<Cards.PhunixsInbox>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.PhunixsInbox.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.BigSibling>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.BigSibling.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.BouncingBetties>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.BouncingBetties.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.BulletproofPlan>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.BulletproofPlan.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.CosmicRays>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.CosmicRays.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.LittleSibling>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.LittleSibling.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.Police>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.Police.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.Politician>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.Politician.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.Pyromaniac>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.Pyromaniac.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.RushHourTraffic>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.RushHourTraffic.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.SilentButDeadly>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.SilentButDeadly.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.InstaReload>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.InstaReload.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.OhDeer>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.OhDeer.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.PhunixSandwich>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.PhunixSandwich.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.MakasLaugh>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.MakasLaugh.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.VanillaCombo>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.VanillaCombo.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.Worg>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.Worg.cardInfoInstance = card;
-            });
             CustomCard.BuildCard<Cards.ComboCombo>((card) => {
                 // Save the CardInfo instance for later use
                 Cards.ComboCombo.cardInfoInstance = card;
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            });
+            }); 
             });
 
             // Harmony patching: all patches in the same assembly as this class will be applied

@@ -47,15 +47,15 @@ namespace PandasCardCombos.Cards
                     1
                 },
                 {
-                    GetCardInfoByName("__PCC__Oh Deer!"),
+                    OhDeer.cardInfoInstance,
                     1
                 },
                 {
-                    GetCardInfoByName("__PCC__Insta Reload"),
+                    InstaReload.cardInfoInstance,
                     1
                 },
                 {
-                    GetCardInfoByName("__PCC_Phunix's Business Email"),
+                    PhunixsInbox.cardInfoInstance,
                     1
                 }
             };

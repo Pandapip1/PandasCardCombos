@@ -96,6 +96,22 @@ namespace PandasCardCombos
                 // Save the CardInfo instance for later use
                 Cards.PhunixSandwich.cardInfoInstance = card;
             });
+            CustomCard.BuildCard<Cards.MakasLaugh>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.MakasLaugh.cardInfoInstance = card;
+            });
+            CustomCard.BuildCard<Cards.VanillaCombo>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.VanillaCombo.cardInfoInstance = card;
+            });
+            CustomCard.BuildCard<Cards.Worg>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.Worg.cardInfoInstance = card;
+            });
+            CustomCard.BuildCard<Cards.ComboCombo>((card) => {
+                // Save the CardInfo instance for later use
+                Cards.ComboCombo.cardInfoInstance = card;
+            });
 
             // Harmony patching: all patches in the same assembly as this class will be applied
             Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);

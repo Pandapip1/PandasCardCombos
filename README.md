@@ -28,12 +28,4 @@ If you have tested this mod with another mod and it is not listed here, please [
 
 ## License
 
-### Content Creator
-
-If you are a content creator on YouTube or any other similar platform and would like to use this mod in your video, you may do so by conspicuously crediting me and linking to the Thunderstore page in the description of your video using the following text:
-
-> This video uses the mod "Panda's Card Combos" by Pandapip1, which can be found at https://rounds.thunderstore.io/package/Pandapip1/PandasCardCombos/
-
-### Source Code
-
-The source code for this mod is licensed under the MIT License. In summary, you are free to use this code in any way you want, as long as you include the license file that credits me. The full license can be found in the [LICENSE.md](LICENSE.md) file.
+This mod is licensed under the MIT License.
